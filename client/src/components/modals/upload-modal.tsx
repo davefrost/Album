@@ -18,7 +18,7 @@ interface UploadModalProps {
 }
 
 export function UploadModal({ open, onOpenChange }: UploadModalProps) {
-  const [selectedAlbumId, setSelectedAlbumId] = useState<string>("");
+  const [selectedAlbumId, setSelectedAlbumId] = useState<string>("no-album");
   const [tags, setTags] = useState("");
   const [autoResize, setAutoResize] = useState(true);
   const [isPublic, setIsPublic] = useState(false);
@@ -51,7 +51,7 @@ export function UploadModal({ open, onOpenChange }: UploadModalProps) {
   });
 
   const resetForm = () => {
-    setSelectedAlbumId("");
+    setSelectedAlbumId("no-album");
     setTags("");
     setAutoResize(true);
     setIsPublic(false);
@@ -83,7 +83,7 @@ export function UploadModal({ open, onOpenChange }: UploadModalProps) {
           size: file.size || 0,
           objectPath: uploadURL,
           type: file.type?.startsWith("video/") ? "video" : "photo",
-          albumId: selectedAlbumId || undefined,
+          albumId: selectedAlbumId === "no-album" ? undefined : selectedAlbumId,
           tags: tagsArray,
           isPublic,
           metadata: {
@@ -142,7 +142,7 @@ export function UploadModal({ open, onOpenChange }: UploadModalProps) {
                     <SelectValue placeholder="Select an album" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">No album</SelectItem>
+                    <SelectItem value="no-album">No album</SelectItem>
                     {albumsData?.albums?.map((album: any) => (
                       <SelectItem key={album.id} value={album.id}>
                         {album.name}
