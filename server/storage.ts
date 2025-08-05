@@ -58,7 +58,7 @@ export class MemStorage implements IStorage {
     const admin: User = {
       id: adminId,
       username: "admin",
-      password: "$2b$10$8K1p/a9aXQy2Qa8Bb.BWte8XKf/wjnCx.6Df/6lqbJc/6lqbJc123", // password: admin123
+      password: "$2b$10$zVV0VRof6E3bIy0dbAMpreN4VBSsygTb/BebwtHkyR9KJ6KMItW5K", // password: admin123
       email: "admin@photovault.com",
       role: "admin",
       createdAt: new Date(),
